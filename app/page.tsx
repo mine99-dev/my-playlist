@@ -233,7 +233,17 @@ export default function Home() {
   const [saveMessage, setSaveMessage] = useState('');
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    setMounted(true);
+    const saved = localStorage.getItem('playlist');
+    if (saved) setPlaylist(JSON.parse(saved));
+    const savedState = localStorage.getItem('isSaved');
+    if (savedState === 'true') setIsSaved(true);
+  }, []);
+
+  useEffect(() => {
+    if (mounted) localStorage.setItem('playlist', JSON.stringify(playlist));
+  }, [playlist, mounted]);
 
   const filteredSongs = MELON_TOP_100.filter(song =>
     song.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -251,6 +261,7 @@ export default function Home() {
 
   const savePlaylist = () => {
     setIsSaved(true);
+    localStorage.setItem('isSaved', 'true');
     setSaveMessage('플레이리스트가 저장되었습니다!');
     setTimeout(() => setSaveMessage(''), 3000);
   };
