@@ -114,7 +114,7 @@ function WaveformBars() {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '2px', height: '36px' }}>
       {bars.map((h, i) => (
-        <div key={i} style={{ width: '3px', height: `${h}px`, borderRadius: '2px', background: '#111', opacity: 0.8 }} />
+        <div key={i} style={{ width: '3px', height: `${h}px`, borderRadius: '2px', background: 'linear-gradient(to top, #ec4899, #a855f7)', opacity: 0.85 }} />
       ))}
     </div>
   );
@@ -125,7 +125,7 @@ function Controls() {
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
       <span style={{ fontSize: '14px', cursor: 'pointer' }}>⇌</span>
       <span style={{ fontSize: '20px', cursor: 'pointer' }}>⏮</span>
-      <div style={{ width: '44px', height: '44px', background: '#111', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
+      <div style={{ width: '44px', height: '44px', background: 'linear-gradient(135deg, #ec4899, #a855f7)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
         <span style={{ color: 'white', fontSize: '16px', marginLeft: '3px' }}>▶</span>
       </div>
       <span style={{ fontSize: '20px', cursor: 'pointer' }}>⏭</span>
@@ -138,8 +138,8 @@ function ProgressBar({ pct }: { pct: number }) {
   return (
     <div>
       <div style={{ position: 'relative', height: '3px', background: '#e0e0e0', borderRadius: '2px' }}>
-        <div style={{ position: 'absolute', left: 0, top: 0, width: `${pct}%`, height: '100%', background: '#111', borderRadius: '2px' }} />
-        <div style={{ position: 'absolute', left: `${pct}%`, top: '-4px', width: '10px', height: '10px', background: '#111', borderRadius: '50%', transform: 'translateX(-50%)' }} />
+        <div style={{ position: 'absolute', left: 0, top: 0, width: `${pct}%`, height: '100%', background: 'linear-gradient(to right, #ec4899, #a855f7)', borderRadius: '2px' }} />
+        <div style={{ position: 'absolute', left: `${pct}%`, top: '-4px', width: '10px', height: '10px', background: '#a855f7', borderRadius: '50%', transform: 'translateX(-50%)' }} />
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#999', marginTop: '6px' }}>
         <span>0:25</span><span>3:40</span>
@@ -149,7 +149,7 @@ function ProgressBar({ pct }: { pct: number }) {
 }
 
 const cardStyle = {
-  background: '#fff', border: '1.5px solid #111', borderRadius: '20px',
+  background: '#fff', border: '1.5px solid #e879f9', borderRadius: '20px',
   padding: '20px', fontFamily: "'Georgia', serif", display: 'flex', flexDirection: 'column' as const, gap: '12px'
 };
 
@@ -203,7 +203,7 @@ function MinimalCard({ song }: { song: Song }) {
 
 function SquareCard({ song }: { song: Song }) {
   return (
-    <div style={{ background: '#fff', border: '1.5px solid #111', borderRadius: '20px', overflow: 'hidden', fontFamily: "'Georgia', serif" }}>
+    <div style={{ background: '#fff', border: '1.5px solid #e879f9', borderRadius: '20px', overflow: 'hidden', fontFamily: "'Georgia', serif" }}>
       <div style={{ position: 'relative' }}>
         <img src={song.cover} alt={song.title} style={{ width: '100%', aspectRatio: '1', objectFit: 'cover', display: 'block' }} />
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(transparent, rgba(0,0,0,0.75))', padding: '24px 16px 12px', color: 'white' }}>
@@ -276,20 +276,20 @@ export default function Home() {
   if (!mounted) return null;
 
   return (
-    <div style={{ minHeight: '100vh', background: '#f7f6f2', fontFamily: "'Georgia', serif" }}>
+    <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #fdf2f8 0%, #faf5ff 50%, #f0f4ff 100%)', fontFamily: "'Georgia', serif" }}>
 
       {/* 헤더 */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 32px', borderBottom: '1px solid #ddd' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 32px', borderBottom: '1px solid #f0d6f5', background: 'rgba(255,255,255,0.7)' }}>
         {isSaved
-          ? <button onClick={() => setIsSaved(false)} style={{ padding: '8px 20px', border: '1.5px solid #111', borderRadius: '20px', background: 'transparent', cursor: 'pointer', fontSize: '13px', fontFamily: 'monospace' }}>미리보기</button>
+          ? <button onClick={() => setIsSaved(false)} style={{ padding: '8px 20px', border: '1.5px solid #c026d3', borderRadius: '20px', background: 'transparent', cursor: 'pointer', fontSize: '13px', fontFamily: 'monospace', color: '#c026d3' }}>리스트로 보기</button>
           : <div />}
         <div style={{ display: 'flex', gap: '8px', marginLeft: 'auto' }}>
           {playlist.length > 0 && (
-            <button onClick={resetPlaylist} style={{ padding: '8px 22px', border: '1.5px solid #ccc', borderRadius: '20px', background: 'transparent', cursor: 'pointer', fontSize: '13px', fontFamily: 'monospace', color: '#999' }}>
+            <button onClick={resetPlaylist} style={{ padding: '8px 22px', border: '1.5px solid #f0abfc', borderRadius: '20px', background: 'transparent', cursor: 'pointer', fontSize: '13px', fontFamily: 'monospace', color: '#c084fc' }}>
               초기화
             </button>
           )}
-          <button onClick={() => setIsModalOpen(true)} style={{ padding: '8px 22px', border: '1.5px solid #111', borderRadius: '20px', background: 'transparent', cursor: 'pointer', fontSize: '13px', fontFamily: 'monospace' }}>
+          <button onClick={() => setIsModalOpen(true)} style={{ padding: '8px 22px', border: 'none', borderRadius: '20px', background: 'linear-gradient(135deg, #ec4899, #a855f7)', cursor: 'pointer', fontSize: '13px', fontFamily: 'monospace', color: 'white' }}>
             노래 추가하기
           </button>
         </div>
@@ -299,9 +299,9 @@ export default function Home() {
         /* ── 저장된 플레이리스트: 혼합 카드 그리드 ── */
         <div style={{ maxWidth: '900px', margin: '0 auto', padding: '48px 24px' }}>
           <div style={{ marginBottom: '40px', textAlign: 'center' }}>
-            <div style={{ fontSize: '11px', letterSpacing: '3px', color: '#999', fontFamily: 'monospace', textTransform: 'uppercase', marginBottom: '8px' }}>my playlist</div>
-            <h1 style={{ fontSize: '48px', fontWeight: '700', margin: 0, lineHeight: 1.1 }}>Playlist</h1>
-            <div style={{ fontSize: '13px', color: '#888', marginTop: '8px', fontFamily: 'monospace' }}>{playlist.length}곡</div>
+            <div style={{ fontSize: '11px', letterSpacing: '3px', color: '#c084fc', fontFamily: 'monospace', textTransform: 'uppercase', marginBottom: '8px' }}>my playlist</div>
+            <h1 style={{ fontSize: '48px', fontWeight: '700', margin: 0, lineHeight: 1.1, background: 'linear-gradient(135deg, #ec4899, #a855f7)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Playlist</h1>
+            <div style={{ fontSize: '13px', color: '#c084fc', marginTop: '8px', fontFamily: 'monospace' }}>{playlist.length}곡</div>
           </div>
           <div style={{ columns: 2, gap: '16px' }}>
             {playlist.map((song, i) => (
@@ -318,12 +318,12 @@ export default function Home() {
 
           {/* 빈닐 히어로 섹션 */}
           <div style={{ textAlign: 'center', marginBottom: '52px', position: 'relative', userSelect: 'none' }}>
-            <div style={{ position: 'absolute', top: '8px', left: '48px', fontSize: '16px', color: '#bbb' }}>☆</div>
-            <div style={{ position: 'absolute', top: '64px', right: '64px', fontSize: '12px', color: '#ccc' }}>☆</div>
-            <div style={{ position: 'absolute', top: '18px', left: '130px', fontSize: '12px', color: '#ddd' }}>♥</div>
-            <div style={{ position: 'absolute', top: '90px', left: '32px', fontSize: '10px', color: '#ddd' }}>♥</div>
+            <div style={{ position: 'absolute', top: '8px', left: '48px', fontSize: '16px', color: '#f9a8d4' }}>☆</div>
+            <div style={{ position: 'absolute', top: '64px', right: '64px', fontSize: '12px', color: '#d8b4fe' }}>☆</div>
+            <div style={{ position: 'absolute', top: '18px', left: '130px', fontSize: '12px', color: '#f0abfc' }}>♥</div>
+            <div style={{ position: 'absolute', top: '90px', left: '32px', fontSize: '10px', color: '#ddd6fe' }}>♥</div>
 
-            <div style={{ fontFamily: 'monospace', fontWeight: '900', fontSize: '26px', letterSpacing: '5px', lineHeight: 1.1, textTransform: 'uppercase' }}>MY MONTHLY</div>
+            <div style={{ fontFamily: 'monospace', fontWeight: '900', fontSize: '26px', letterSpacing: '5px', lineHeight: 1.1, textTransform: 'uppercase', color: '#9333ea' }}>MY MONTHLY</div>
             <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: '0' }}>
               <span style={{ fontStyle: 'italic', fontSize: '56px', fontWeight: '700', lineHeight: 1 }}>P</span>
               <span style={{ fontSize: '42px', fontWeight: '400', lineHeight: 1 }}>laylist</span>
@@ -369,10 +369,10 @@ export default function Home() {
 
             {/* 트랙 리스트 */}
             {playlist.length > 0 && (
-              <div style={{ background: 'white', border: '1px solid #ddd', borderRadius: '0 0 12px 12px', padding: '16px 28px', fontFamily: 'monospace', fontSize: '13px' }}>
+              <div style={{ background: 'white', border: '1px solid #f0d6f5', borderRadius: '0 0 12px 12px', padding: '16px 28px', fontFamily: 'monospace', fontSize: '13px' }}>
                 {playlist.slice(0, 5).map((song, i) => (
-                  <div key={song.id} style={{ display: 'flex', justifyContent: 'space-between', padding: '3px 0', color: '#444' }}>
-                    <span style={{ color: '#bbb', marginRight: '16px' }}>0{i + 1}</span>
+                  <div key={song.id} style={{ display: 'flex', justifyContent: 'space-between', padding: '3px 0', color: '#581c87' }}>
+                    <span style={{ color: '#e879f9', marginRight: '16px' }}>0{i + 1}</span>
                     <span style={{ textAlign: 'right' }}>{song.title}</span>
                   </div>
                 ))}
@@ -381,19 +381,19 @@ export default function Home() {
           </div>
 
           {/* 편집 리스트 */}
-          <h2 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '14px', fontFamily: 'monospace', letterSpacing: '1px' }}>
+          <h2 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '14px', fontFamily: 'monospace', letterSpacing: '1px', color: '#9333ea' }}>
             현재 플레이리스트 ({playlist.length}곡)
           </h2>
 
           {playlist.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '60px', color: '#bbb', border: '1.5px dashed #ddd', borderRadius: '16px', fontFamily: 'monospace', fontSize: '13px' }}>
+            <div style={{ textAlign: 'center', padding: '60px', color: '#c084fc', border: '1.5px dashed #f0abfc', borderRadius: '16px', fontFamily: 'monospace', fontSize: '13px' }}>
               노래 추가하기 버튼으로 곡을 추가해보세요
             </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {playlist.map((song, index) => (
-                <div key={song.id} style={{ background: 'white', borderRadius: '14px', padding: '12px 16px', border: '1px solid #e5e5e5', display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <span style={{ color: '#bbb', fontSize: '12px', minWidth: '20px', fontFamily: 'monospace' }}>{String(index + 1).padStart(2, '0')}</span>
+                <div key={song.id} style={{ background: 'white', borderRadius: '14px', padding: '12px 16px', border: '1px solid #f0d6f5', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <span style={{ color: '#e879f9', fontSize: '12px', minWidth: '20px', fontFamily: 'monospace' }}>{String(index + 1).padStart(2, '0')}</span>
                   <img src={song.cover} alt={song.title} style={{ width: '44px', height: '44px', borderRadius: '8px', objectFit: 'cover' }} />
                   <div style={{ flex: 1 }}>
                     <div style={{ fontWeight: '600', fontSize: '14px' }}>{song.title}</div>
@@ -407,11 +407,11 @@ export default function Home() {
 
           {playlist.length > 0 && (
             <div style={{ marginTop: '20px' }}>
-              <button onClick={savePlaylist} style={{ width: '100%', padding: '14px', background: 'white', border: '1.5px solid #111', borderRadius: '14px', cursor: 'pointer', fontSize: '14px', fontFamily: 'monospace', letterSpacing: '1px' }}>
+              <button onClick={savePlaylist} style={{ width: '100%', padding: '14px', background: 'linear-gradient(135deg, #ec4899, #a855f7)', border: 'none', borderRadius: '14px', cursor: 'pointer', fontSize: '14px', fontFamily: 'monospace', letterSpacing: '1px', color: 'white' }}>
                 플레이리스트 저장
               </button>
               {saveMessage && (
-                <div style={{ marginTop: '8px', padding: '12px', background: '#4caf50', color: 'white', borderRadius: '10px', textAlign: 'center', fontSize: '13px', fontFamily: 'monospace' }}>
+                <div style={{ marginTop: '8px', padding: '12px', background: 'linear-gradient(135deg, #ec4899, #a855f7)', color: 'white', borderRadius: '10px', textAlign: 'center', fontSize: '13px', fontFamily: 'monospace' }}>
                   {saveMessage}
                 </div>
               )}
@@ -423,19 +423,19 @@ export default function Home() {
       {/* 검색 모달 */}
       {isModalOpen && (
         <div onClick={() => setIsModalOpen(false)} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.45)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
-          <div onClick={e => e.stopPropagation()} style={{ background: 'white', borderRadius: '20px', width: '480px', maxHeight: '80vh', display: 'flex', flexDirection: 'column', overflow: 'hidden', border: '1.5px solid #111' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 20px', borderBottom: '1px solid #eee' }}>
-              <span style={{ fontWeight: '700', fontSize: '15px', fontFamily: 'monospace' }}>노래 찾기</span>
+          <div onClick={e => e.stopPropagation()} style={{ background: 'white', borderRadius: '20px', width: '480px', maxHeight: '80vh', display: 'flex', flexDirection: 'column', overflow: 'hidden', border: '1.5px solid #e879f9' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 20px', borderBottom: '1px solid #fce7f3' }}>
+              <span style={{ fontWeight: '700', fontSize: '15px', fontFamily: 'monospace', color: '#9333ea' }}>노래 찾기</span>
               <button onClick={() => setIsModalOpen(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '20px', color: '#888' }}>×</button>
             </div>
-            <div style={{ padding: '12px 20px', borderBottom: '1px solid #eee' }}>
+            <div style={{ padding: '12px 20px', borderBottom: '1px solid #fce7f3' }}>
               <input
                 autoFocus
                 type="text"
                 placeholder="노래 제목 또는 가수 검색"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                style={{ width: '100%', padding: '10px 14px', border: '1.5px solid #111', borderRadius: '10px', fontSize: '14px', outline: 'none', boxSizing: 'border-box', fontFamily: 'monospace' }}
+                style={{ width: '100%', padding: '10px 14px', border: '1.5px solid #e879f9', borderRadius: '10px', fontSize: '14px', outline: 'none', boxSizing: 'border-box', fontFamily: 'monospace', color: '#581c87' }}
               />
             </div>
             <div style={{ overflowY: 'auto', flex: 1 }}>
@@ -453,7 +453,7 @@ export default function Home() {
                       <button
                         onClick={() => addToPlaylist(song)}
                         disabled={alreadyAdded}
-                        style={{ padding: '6px 14px', borderRadius: '20px', fontSize: '12px', cursor: alreadyAdded ? 'default' : 'pointer', border: '1px solid #ddd', fontFamily: 'monospace', background: alreadyAdded ? '#f0f0f0' : '#111', color: alreadyAdded ? '#aaa' : 'white' }}
+                        style={{ padding: '6px 14px', borderRadius: '20px', fontSize: '12px', cursor: alreadyAdded ? 'default' : 'pointer', border: 'none', fontFamily: 'monospace', background: alreadyAdded ? '#f3e8ff' : 'linear-gradient(135deg, #ec4899, #a855f7)', color: alreadyAdded ? '#c084fc' : 'white' }}
                       >
                         {alreadyAdded ? '추가됨' : '추가'}
                       </button>
