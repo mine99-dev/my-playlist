@@ -259,6 +259,13 @@ export default function Home() {
 
   const removeFromPlaylist = (id: number) => setPlaylist(prev => prev.filter(s => s.id !== id));
 
+  const resetPlaylist = () => {
+    setPlaylist([]);
+    setIsSaved(false);
+    localStorage.removeItem('playlist');
+    localStorage.removeItem('isSaved');
+  };
+
   const savePlaylist = () => {
     setIsSaved(true);
     localStorage.setItem('isSaved', 'true');
@@ -276,9 +283,16 @@ export default function Home() {
         {isSaved
           ? <button onClick={() => setIsSaved(false)} style={{ padding: '8px 20px', border: '1.5px solid #111', borderRadius: '20px', background: 'transparent', cursor: 'pointer', fontSize: '13px', fontFamily: 'monospace' }}>미리보기</button>
           : <div />}
-        <button onClick={() => setIsModalOpen(true)} style={{ padding: '8px 22px', border: '1.5px solid #111', borderRadius: '20px', background: 'transparent', cursor: 'pointer', fontSize: '13px', fontFamily: 'monospace', marginLeft: 'auto' }}>
-          노래 추가하기
-        </button>
+        <div style={{ display: 'flex', gap: '8px', marginLeft: 'auto' }}>
+          {playlist.length > 0 && (
+            <button onClick={resetPlaylist} style={{ padding: '8px 22px', border: '1.5px solid #ccc', borderRadius: '20px', background: 'transparent', cursor: 'pointer', fontSize: '13px', fontFamily: 'monospace', color: '#999' }}>
+              초기화
+            </button>
+          )}
+          <button onClick={() => setIsModalOpen(true)} style={{ padding: '8px 22px', border: '1.5px solid #111', borderRadius: '20px', background: 'transparent', cursor: 'pointer', fontSize: '13px', fontFamily: 'monospace' }}>
+            노래 추가하기
+          </button>
+        </div>
       </div>
 
       {isSaved ? (
